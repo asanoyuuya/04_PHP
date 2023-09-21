@@ -1,22 +1,23 @@
 <?php
-$goods1 = [
+$goods = [
     [
-        'name'  => '和風柄レターセット',
+        'name' => '和風柄レターセット',
         'price' => 980
     ],
-];
-
-$goods2 = [
     [
-        'name'  => '毛筆ペン(細字)',
+        'name' => '毛筆ペン(細字)',
         'price' => 240
     ],
 ];
 
+echo '<pre>';
+print_r($goods);
+echo '</pre>';
+
 $count1 = $_POST['count1'];
 $count2 = $_POST['count2'];
-$subTotal1 = $count1 * $goods1['price'];
-$subTotal2 = $count2 * $goods2['price'];
+$subTotal1 = $count1 * $goods[0]['price'];
+$subTotal2 = $count2 * $goods[1]['price'];
 $totalPrice = $subTotal1 + $subTotal2;
 ?>
 
@@ -28,20 +29,20 @@ $totalPrice = $subTotal1 + $subTotal2;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ショッピングカート</title>
     <style>
-    table {
-        border-collapse: collapse;
-        width: 600px;
-    }
+        table {
+            border-collapse: collapse;
+            width: 600px;
+        }
 
-    th,
-    td {
-        border: 1px solid #666666;
-        padding: 4px;
-    }
+        th,
+        td {
+            border: 1px solid #666666;
+            padding: 4px;
+        }
 
-    th {
-        background-color: #dddddd;
-    }
+        th {
+            background-color: #dddddd;
+        }
     </style>
 </head>
 
@@ -56,38 +57,41 @@ $totalPrice = $subTotal1 + $subTotal2;
                 <th>小計</th>
             </tr>
             <tr>
-            <?php
-            foreach ($goods1 as $good1) {
-                    echo '<td>' . $good1['name'] . '</td>';
-                    echo '<td>' . $good1['price'] . '円</td>';
-                }
-                ?>
                 <td>
-                    <input type="text" name="count1" value="<?=htmlspecialchars($count1, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">
+                    <?= $goods[0]['name'] ?>
                 </td>
                 <td>
-                    <?=$subTotal1?>
-                </td>
-            </tr>
-            <?php
-            foreach ($goods2 as $good2) {
-                    echo '<td>' . $good2['name'] . '</td>';
-                    echo '<td>' . $good2['price'] . '円</td>';
-                }
-                ?>
-                <td>
-                    <input type="text" name="count2" value="<?=htmlspecialchars($count2, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">
+                    <?= $goods[0]['price'] ?>
                 </td>
                 <td>
-                    <?=$subTotal2?>
+                    <input type="text" name="count1"
+                        value="<?= htmlspecialchars($count1, ENT_QUOTES | ENT_HTML5, 'UTF-8') ?>">
+                </td>
+                <td>
+                    <?= $subTotal1 ?>
                 </td>
             </tr>
             <tr>
-                <th colspan = "3">
+                <td>
+                    <?= $goods[1]['name'] ?>
+                </td>
+                <td>
+                    <?= $goods[1]['price'] ?>
+                </td>
+                <td>
+                    <input type="text" name="count2"
+                        value="<?= htmlspecialchars($count2, ENT_QUOTES | ENT_HTML5, 'UTF-8') ?>">
+                </td>
+                <td>
+                    <?= $subTotal2 ?>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">
                     合計
                 </th>
                 <td>
-                <?=$totalPrice?>
+                    <?= $totalPrice ?>
                 </td>
             </tr>
         </table>
