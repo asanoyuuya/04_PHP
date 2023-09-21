@@ -23,7 +23,7 @@ if (!empty($_POST)) {
 <body>
     <h1>計算</h1>
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
-        <h2><?=$num1?> + <?=$num2?> = <?=$result?></h2>
+        <h2><?=htmlspecialchars($num1, ENT_QUOTES | ENT_HTML5, 'UTF-8')?> + <?=htmlspecialchars($num2, ENT_QUOTES | ENT_HTML5, 'UTF-8')?> = <?=$result?></h2>
     <?php endif; ?>
 
     <form action="" method="post">
