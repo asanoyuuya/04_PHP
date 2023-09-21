@@ -32,9 +32,9 @@ if (!empty($_POST)) {
                 <option <?php ($item == 'メロン') ? 'selected' : '' ;?>>メロン</option>
                 <option <?php ($item == 'みかん') ? 'selected' : '' ;?>>みかん</option>
                 <option <?php ($item == 'レモン') ? 'selected' : '' ;?>>レモン</option>
-                <option <?php switch($item){case 'キウイ': echo 'selected';}?>>キウイ</option>
-                <option <?php switch($item){case 'いちご': echo 'selected';}?>>いちご</option>
-                <option <?php switch($item){case 'スイカ': echo 'selected';}?>>スイカ</option>
+                <option <?php switch($item) {case 'キウイ': echo 'selected'; }?>>キウイ</option>
+                <option <?php switch($item) {case 'いちご': echo 'selected'; }?>>いちご</option>
+                <option <?php switch($item) {case 'スイカ': echo 'selected'; }?>>スイカ</option>
             </select>
         </p>
         <p><input type="submit" value="送信"></p>
