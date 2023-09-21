@@ -13,7 +13,6 @@ $goods2 = [
     ],
 ];
 
-
 $count1 = $_POST['count1'];
 $count2 = $_POST['count2'];
 $subTotal1 = $count1 * $goods1['price'];
