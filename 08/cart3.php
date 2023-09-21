@@ -10,9 +10,6 @@ $goods = [
     ],
 ];
 
-echo '<pre>';
-print_r($goods);
-echo '</pre>';
 
 $count1 = $_POST['count1'];
 $count2 = $_POST['count2'];
@@ -48,7 +45,7 @@ $totalPrice = $subTotal1 + $subTotal2;
 
 <body>
     <h1>ショッピングカート</h1>
-    <form action="" method="post">
+    <form action="" method="post" novalidate>
         <table>
             <tr>
                 <th>商品名</th>
