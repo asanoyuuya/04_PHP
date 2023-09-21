@@ -12,11 +12,12 @@ $birthStones = [
       'サファイア',
       'オパール',
       'トパーズ',
-     'ターコイズ'
+      'ターコイズ'
 ];
 
 $month = $_POST['month'];
-$stoneName = $birthStones[$_POST['month'] - 1];
+
+$stoneName = $birthStones[$month -1 ];
 
 ?>
 
