@@ -9,7 +9,6 @@ if (!empty($_POST)) {
     $result = $num1 + $num2;
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
