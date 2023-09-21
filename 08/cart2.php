@@ -1,17 +1,9 @@
 <?php
-$goods1 = [
-    [
-        'name'  => '和風柄レターセット',
-        'price' => 980
-    ],
-];
+$goods1['name']  = '和風柄レターセット';
+$goods1['price'] = 980;
 
-$goods2 = [
-    [
-        'name'  => '毛筆ペン(細字)',
-        'price' => 240
-    ],
-];
+$goods2['name']  =  '毛筆ペン(細字)';
+$goods2['price'] =  240;
 
 $count1 = $_POST['count1'];
 $count2 = $_POST['count2'];
@@ -56,12 +48,12 @@ $totalPrice = $subTotal1 + $subTotal2;
                 <th>小計</th>
             </tr>
             <tr>
-            <?php
-            foreach ($goods1 as $good1) {
-                    echo '<td>' . $good1['name'] . '</td>';
-                    echo '<td>' . $good1['price'] . '円</td>';
-                }
-                ?>
+                <td>
+                    <?=$goods1['name']?>
+                </td>
+                <td>
+                    <?=$goods1['price']?>円
+                </td>
                 <td>
                     <input type="text" name="count1" value="<?=htmlspecialchars($count1, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">
                 </td>
@@ -69,12 +61,12 @@ $totalPrice = $subTotal1 + $subTotal2;
                     <?=$subTotal1?>
                 </td>
             </tr>
-            <?php
-            foreach ($goods2 as $good2) {
-                    echo '<td>' . $good2['name'] . '</td>';
-                    echo '<td>' . $good2['price'] . '円</td>';
-                }
-                ?>
+            <td>
+                    <?=$goods2['name']?>
+                </td>
+                <td>
+                    <?=$goods2['price']?>円
+                </td>
                 <td>
                     <input type="text" name="count2" value="<?=htmlspecialchars($count2, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">
                 </td>
