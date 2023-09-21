@@ -2,7 +2,6 @@
 
 $num1 = '';
 $num2 = '';
-$result = '';
 
 if (!empty($_POST)) {
     $num1 = $_POST['num1'];
@@ -29,7 +28,7 @@ if (!empty($_POST)) {
 
     <form action="" method="post">
         <input type="text" name="num1" value="<?=htmlspecialchars($num1, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">+
-        <input type="text" name="num2" value="<?=htmlspecialchars($num2, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">=<?=$result?>
+        <input type="text" name="num2" value="<?=htmlspecialchars($num2, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">=
         <p><input type="submit" value="計算"></p>
     </form>
 </body>
