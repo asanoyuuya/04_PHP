@@ -63,7 +63,7 @@ $totalPrice = $subTotal1 + $subTotal2;
                 }
                 ?>
                 <td>
-                    <input type="text" name="count1" value="">
+                    <input type="text" name="count1" value="<?=htmlspecialchars($count1, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">
                 </td>
                 <td>
                     <?=$subTotal1?>
@@ -76,7 +76,7 @@ $totalPrice = $subTotal1 + $subTotal2;
                 }
                 ?>
                 <td>
-                    <input type="text" name="count1" value="">
+                    <input type="text" name="count2" value="<?=htmlspecialchars($count2, ENT_QUOTES | ENT_HTML5, 'UTF-8')?>">
                 </td>
                 <td>
                     <?=$subTotal2?>
