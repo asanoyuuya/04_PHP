@@ -29,9 +29,9 @@ if (!empty($_POST)) {
                 <option <?php if ($item == 'リンゴ') echo 'selected' ?>>リンゴ</option>
                 <option <?php if ($item == 'バナナ') echo 'selected' ?>>バナナ</option>
                 <option <?php if ($item == 'ぶどう') echo 'selected' ?>>ぶどう</option>
-                <option <?php ($item == 'メロン') ? 'selected' : '' ;?>>メロン</option>
-                <option <?php ($item == 'みかん') ? 'selected' : '' ;?>>みかん</option>
-                <option <?php ($item == 'レモン') ? 'selected' : '' ;?>>レモン</option>
+                <option <?= $item == 'メロン' ? 'selected' : '' ;?>>メロン</option>
+                <option <?= $item == 'みかん' ? 'selected' : '' ;?>>みかん</option>
+                <option <?= $item == 'レモン' ? 'selected' : '' ;?>>レモン</option>
             </select>
         </p>
         <p><input type="submit" value="送信"></p>
