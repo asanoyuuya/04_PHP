@@ -1,9 +1,11 @@
 <?php
+
 $score = '';
 if (!empty($_POST)) {
     $score = $_POST['score'];
 }
-    function getScoreResult($score){
+    function getScoreResult($score)
+    {
         if (!is_numeric($score)) {
             return '数値を入力してください';
         } elseif ($score >= 101 or $score < 0) {
@@ -39,7 +41,7 @@ if (!empty($_POST)) {
         </p>
     </form>
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
-        <p>判定：<?=getScoreResult($socre)?></p>
+        <p>判定：<?= getScoreResult($score) ?></p>
     <?php endif; ?>
 </body>
 
