@@ -9,5 +9,5 @@ for ($i = 0; $i < count($arrNum); $i++){
     $total += $index;
 }
 
-echo '<br>' . number_format($total) . '円' ;
+echo '<br>' . number_format($total / count($arrNum)) . '円' ;
 
