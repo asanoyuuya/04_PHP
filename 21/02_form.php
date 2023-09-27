@@ -1,10 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
-$greeting = '';
+$name = '';
 if (!empty($_POST)) {
-    $greeting = $_POST['greeting'];
+    $name = $_POST['name'];
 }
 
 
@@ -30,14 +28,14 @@ function h(?string $string): ?string
     <title>挨拶</title>
 </head>
 <body>
-    <form action="" method="post" novalidate>
-        <input type="text"  name="greeting" cols="50" value="<?= htmlspecialchars($greeting, ENT_QUOTES | ENT_HTML5, 'UTF-8') ?>"></input>
-        <p><input type="submit" value="送信"></p>
-    </form>
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
         <h2>
-            <?= h($greeting) ?>
+            <?= h($name) ?>さん、おはようございます！
         </h2>
     <?php endif; ?>
+    <form action="" method="post" novalidate>
+        <input type="text"  name="name" value="<?= h($name) ?>"></input>
+        <p><input type="submit" value="送信"></p>
+    </form>
 </body>
 </html>
