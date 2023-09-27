@@ -6,7 +6,7 @@ if ($score < 50) {
 } elseif ($score < 65) {
     echo '可';
 } elseif ($score == 70) {
-    echo $score;
+    echo $score . '点';
 } elseif ($score < 80) {
     echo '良';
 } else {
