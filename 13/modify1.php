@@ -13,8 +13,8 @@ if ($days == 0) {
     echo '日付は同じです';
 } else {
     if ($invert == 1) {
-        echo $d1->format('Y年m月d日') .'の方が「' . $days . '日分」' . $d2->format('Y年m月d日') . 'より新しいです';
+        echo $d1->format('Y年m月d日') .'(曜日)の方が「' . $days . '日分」' . $d2->format('Y年m月d日') . '(曜日)より新しいです';
     } else {
-        echo $d2->format('Y年m月d日') .'の方が「' . $days . '日分」' . $d1->format('Y年m月d日') . 'より新しいです';
+        echo $d2->format('Y年m月d日') .'(曜日)の方が「' . $days . '日分」' . $d1->format('Y年m月d日') . '(曜日)より新しいです';
     }
 }
