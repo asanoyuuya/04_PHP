@@ -1,23 +1,41 @@
 <?php
-
-$t = 29;
+$t = 0;
 $h = 70;
 
 /**
- *  温度と湿度を指定すると不快指数の数値を返す
+ * 温度と湿度を指定すると不快指数の数値を返す
  *
- * @param integer $t
- * @param integer $h
- * @return string
+ * @param mixed|null $t
+ * @param mixed $h
+ * @return array|null
  */
-function getDi(?int $t = 24,?int $h = 60):?float
+function getDi(mixed $t = null, mixed $h = 60): ?array
 {
-    if (empty($t) || empty($h)) return null;
-    return 0.81 * $t + 0.01 * $h * (0.99 * $t - 14.3) + 46.3;
+    if (is_null($t) || empty($h)) return null;
+
+    $di = 0.81 * $t + 0.01 * $h * (0.99 * $t - 14.3) + 46.3;
+    $diArr['di'] = $di;
+
+    if ($di < 55) {
+        $diArr['result'] = '寒い';
+    } elseif ($di < 60) {
+        $diArr['result'] = '肌寒い';
+    } elseif ($di < 65) {
+        $diArr['result'] = '何も感じない';
+    } elseif ($di < 70) {
+        $diArr['result'] = '快い';
+    } elseif ($di < 75) {
+        $diArr['result'] = '暑くない';
+    } elseif ($di < 80) {
+        $diArr['result'] = 'やや暑い';
+    } elseif ($di < 85) {
+        $diArr['result'] = '暑くて汗が出る';
+    } else {
+        $diArr['result'] = '暑くてたまらない';
+    }
+    return $diArr;
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -28,11 +46,6 @@ function getDi(?int $t = 24,?int $h = 60):?float
 </head>
 
 <body>
-    <p>気温
-        <?= $t ?>℃、湿度
-        <?= $h ?>%の時の不快指数は
-        <?= getDi() ?>です。
-    </p>
-</body>
+    <p>気温<?= $t ?>℃、湿度<?= $h ?>%の時の不快指数は<?= getDi($t, $h)['di'] ?>で「<?= getDi($t, $h)['result'] ?>」です。</p>
 
 </html>

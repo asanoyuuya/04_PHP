@@ -1,18 +1,15 @@
 <?php
 
+declare(strict_types=1);
+require_once(dirname(__FILE__) . '/util.inc.php');
+
 $seireki = '';
 if (!empty($_POST)) {
     $seireki = $_POST['seireki'];
 }
 
-include_once(dirname(__FILE__) . '/util.inc.php');
 
 $wareki = getWareki($seireki);
-
-if ($wareki == 1)
-{
-    return '元';
-}
 
 ?>
 
@@ -39,7 +36,7 @@ if ($wareki == 1)
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
         <p>
             西暦
-            <?= $seireki ?>年は
+            <?= h($seireki) ?>年は、
             <?= $wareki ?>です。
         </p>
     <?php endif; ?>
