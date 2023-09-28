@@ -15,10 +15,10 @@
                 <?php for ($j = 0; $j < 10; $j++): ?>
                     <td>
                         <?php if ($i == $j): ?>
-                            <?php echo '00' ?>
-                        <?php else : ?>
+                            00
+                        <?php else: ?>
                             <?= $i . $j ?>
-                        <?php endif ;?>
+                        <?php endif; ?>
                     </td>
                 <?php endfor; ?>
             </tr>
