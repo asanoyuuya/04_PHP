@@ -12,13 +12,13 @@
     <table>
         <?php for ($i = 0; $i < 10; $i++): ?>
             <tr>
-                <?php for ($u = 0; $u < 10; $u++): ?>
+                <?php for ($j = 0; $j < 10; $j++): ?>
                     <td>
-                        <?php if ($i == $u) { ?>
-                            <?php echo '00'; ?>
-                        <?php } else { ?>
-                            <?php echo $i . $u; ?>
-                            <?php } ?>
+                        <?php if ($i == $j): ?>
+                            <?php echo '00' ?>
+                        <?php else : ?>
+                            <?= $i . $j ?>
+                        <?php endif ;?>
                     </td>
                 <?php endfor; ?>
             </tr>
