@@ -1,12 +1,12 @@
 <?php
 
-$height = 175;
-$weigth = 70;
+$HEIGHT = 175;
+$WEIGHT = 70;
 
-$BMI = $weigth / (($height * 0.01) ** 2);
-$PROPER = ($height * 0.01) ** 2 * 22;
+$BMI = $WEIGHT / (($HEIGHT * 0.01) ** 2);
+$PROPER = ($HEIGHT * 0.01) ** 2 * 22;
 
-$DIFFERENCE = $weigth - $PROPER;
+$DIFFERENCE = $WEIGHT - $PROPER;
 
-echo '身長は' . $height . 'cmで体重は' . $weigth . 'kgのときのBMI値は' . number_format($BMI, 2) . 'で、<br>';
+echo '身長は' . $HEIGHT . 'cmで体重は' . $WEIGHT . 'kgのときのBMI値は' . number_format($BMI, 2) . 'で、<br>';
 echo '適正体重の' . ($DIFFERENCE > 0 ? '+' : '') . number_format($DIFFERENCE, 2) . 'kgです。';
