@@ -5,7 +5,7 @@ $arrNums = [1, 7, 11];
 /**
  * 配列の平均値
  *
- * @param integer|array $arrNums
+ * @param array $arrNums
  * @return integer
  */
 function getAvg(array $arrNums): int
