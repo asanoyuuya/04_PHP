@@ -15,9 +15,9 @@
                 <?php for ($j = 0; $j < 10; $j++): ?>
                     <?php if ($i == $j): ?>
                         <th>00</th>
-                        <?php else: ?>
+                    <?php else: ?>
                         <td><?= $i . $j ?></td>
-                        <?php endif; ?>
+                    <?php endif; ?>
                 <?php endfor; ?>
             </tr>
         <?php endfor; ?>
