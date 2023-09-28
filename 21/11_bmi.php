@@ -3,10 +3,10 @@
 $HEIGHT = 175;
 $WEIGHT = 70;
 
-$BMI = $WEIGHT / (($HEIGHT * 0.01) ** 2);
-$PROPER = ($HEIGHT * 0.01) ** 2 * 22;
+$bmi = $WEIGHT / (($HEIGHT * 0.01) ** 2);
+$proper = ($HEIGHT * 0.01) ** 2 * 22;
 
-$DIFFERENCE = $WEIGHT - $PROPER;
+$weightDifference = $WEIGHT - $proper;
 
-echo '身長は' . $HEIGHT . 'cmで体重は' . $WEIGHT . 'kgのときのBMI値は' . number_format($BMI, 2) . 'で、<br>';
-echo '適正体重の' . ($DIFFERENCE > 0 ? '+' : '') . number_format($DIFFERENCE, 2) . 'kgです。';
+echo '身長は' . $HEIGHT . 'cmで体重は' . $WEIGHT . 'kgのときのBMI値は' . number_format($bmi, 2) . 'で、<br>';
+echo '適正体重の' . ($weightDifference > 0 ? '+' : '') . number_format($weightDifference, 2) . 'kgです。';
