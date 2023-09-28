@@ -13,13 +13,11 @@
         <?php for ($i = 0; $i < 10; $i++): ?>
             <tr>
                 <?php for ($j = 0; $j < 10; $j++): ?>
-                    <td>
-                        <?php if ($i == $j): ?>
-                            00
+                    <?php if ($i == $j): ?>
+                        <th>00</th>
                         <?php else: ?>
-                            <?= $i . $j ?>
+                        <td><?= $i . $j ?></td>
                         <?php endif; ?>
-                    </td>
                 <?php endfor; ?>
             </tr>
         <?php endfor; ?>
