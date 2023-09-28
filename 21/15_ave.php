@@ -8,7 +8,7 @@ $arrNums = [1, 7, 11];
  * @param integer|array $arrNums
  * @return integer
  */
-function getAvg(int|array $arrNums): int
+function getAvg(array $arrNums): int
 {
     $totalNums = 0;
     foreach ($arrNums as $nums) {
