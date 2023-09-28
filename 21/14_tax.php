@@ -9,9 +9,9 @@ $price = 9876;
  * @param integer $price
  * @return integer
  */
-function getTaxPrice(int $price):int
+function getTaxPrice(int $price): int
 {
-    return $price * 1.1;
+    return floor($price * 1.1);
 }
 
-echo '税込み価格は' . number_format(getTaxPrice($price), 0) . '円です。';
+echo '税込み価格は' . number_format(getTaxPrice($price),) . '円です。';
