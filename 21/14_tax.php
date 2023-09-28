@@ -1,8 +1,6 @@
 <?php
 
-
 $price = 9876;
-
 /**
  * 商品の税込み価格
  *
@@ -14,4 +12,4 @@ function getTaxPrice(int $price): int
     return floor($price * 1.1);
 }
 
-echo '税込み価格は' . number_format(getTaxPrice($price),) . '円です。';
+echo '税込み価格は' . number_format(getTaxPrice($price)) . '円です。';
