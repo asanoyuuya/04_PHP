@@ -13,14 +13,3 @@ foreach ($arrNums as $num) {
 }
 
 echo $even . '<br>' . $odd;
-
-// for ($i = 0; $i < count($arrNums); $i++){
-//      $index = $arrNums[$i];
-//     if ($index [$% 2 == 0){
-//         echo $e . ' ';
-//     } else {
-//         echo $o . ' ';
-//     }
-// echo '<pre>';
-// print_r($arrNums[$i]);
-// echo '</pre>';
