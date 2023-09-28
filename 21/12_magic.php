@@ -1,3 +1,8 @@
+<?php
+$line = __LINE__;
+$file = __FILE__;
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,6 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-    <P>ここは<?= __LINE__ ?>行目です。<br>パスは<?= __FILE__ ?>です。</P>
+    <P>ここは<?= $line ?>行目です。<br>パスは<?= $file ?>です。</P>
 </body>
 </html>
