@@ -97,38 +97,3 @@ echo '</pre>';
 </body>
 
 </html>
-
-<!-- <table> -->
-<!-- <caption>foreachの一覧</caption> -->
-<!-- <tr> -->
-<!-- <th>名前</th> -->
-<!-- <th>年齢</th> -->
-<!-- <th>ポイント</th> -->
-<!-- </tr> -->
-<!-- <?php foreach ($memberList as $member): ?> -->
-<!-- <tr> -->
-<!-- <td> -->
-<!-- <?= $member['name'] ?>様 -->
-<!-- </td> -->
-<!-- <td> -->
-<!-- <?= $member['age'] ?>歳 -->
-<!-- </td> -->
-<!-- <td> -->
-<!-- <?= $member['point'] ?>pt -->
-<!-- </td> -->
-<!-- </tr> -->
-<!-- <?php endforeach; ?> -->
-<!-- <tr> -->
-<!-- <th>平均</th> -->
-<!-- <?php for ($i = 0; $i < count($memberList); $i++): ?> -->
-<!-- <?php $totalAge += $memberList[$i]['age']; ?> -->
-<!-- <?php $totalPoint += $memberList[$i]['point'];?> -->
-<!-- <?php endfor; ?> -->
-<!-- <td><?= $totalAge / count($memberList) ?>歳 -->
-<!-- <td> -->
-<!-- <?= $totalPoint / count($memberList) ?>pt</td> -->
-<!-- </tr> -->
-<!--  -->
-<!-- <?php for ($i = 0; $i < count($memberList); $i++): ?> -->
-<!-- </table> -->
-<!-- <?php endfor; ?> -->

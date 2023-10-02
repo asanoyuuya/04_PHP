@@ -19,9 +19,10 @@ $result = $num1 + $num2;
     <h2><?=$num1?> + <?=$num2?> = <?=$result?></h2>
     <form action="" method="post">
         <input type="text" name="num1" value="<?=$num1?>">+
-        <input type="text" name="num2" value="<?=$num2?>">=<?=$result?>
+        <input type="text" name="num2" value="<?=$num2?>">=
         <p><input type="submit" value="計算"></p>
     </form>
 </body>
 
 </html>
+
