@@ -1,31 +1,28 @@
 <?php
-session_start();
-
-$name = '';
-$pass = '';
-$isValidated = false;
+$query  = '質問'; 
+$name   = '';
+$email  = '';
+$detail = '';
+$result = 0;
 
 if (!empty($_POST)) {
-    $name = $_POST['name'];
+    $user = $_POST['user'];
     $pass = $_POST['pass'];
     
-    if ($_POST["user"] === 'taro' && $_POST['pass'] === 'abcd') {
-        $_SESSION['authenticated'] = true;
+    if (!empty($_SESSION) && $_SESSION['authenticated'] == true) {
+        header('Location: member.php');
+        exit;
     }
     
-    $userId = $_SESSION['authenticated'];
-    
-    if ($userId != true) {
-        header('Location: login.php');
+    if ($user === 'taro' && $pass === 'abcd') {
+        $_SESSION['authenticated'] = true;
+        $_SESSION['userId'] = $user;
+        header('Location: member.php');
         exit;
     } else {
-        header('Location: member.php');
+        $error = 'ユーザIDかパスワードが正しくありません';
     }
     
-    if ($name === '' || !preg_match('/^taro$/u', $name) || !preg_match('/^abcd$/u', $pass)) {
-        $error = 'ユーザIDかパスワードが正しくありません';
-        $isValidated = false;
-    }
 }
 
 
@@ -66,7 +63,7 @@ function h(?string $string): ?string
         <table>
             <tr>
                 <td>ユーザID</td>
-                <td><input type="text" name="user" value="<?= h($name) ?>"></td>
+                <td><input type="text" name="user" value="<?= h($user) ?>"></td>
             </tr>
             <tr>
                 <td>パスワード</td>
