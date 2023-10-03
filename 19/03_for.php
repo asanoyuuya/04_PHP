@@ -10,23 +10,37 @@
     <h1>九九表</h1>
     <table>
         <tr>
-            <?php for ($i = 0; $i <= 9; $i++) :?>
-                <?php if($i == 0) :?>
-                <th></th>
-                <?php else: ?>
+            <th></th>
+            <?php for ($i = 1; $i <= 9; $i++) :?>
                 <th> <?= $i ?></th>
-                <?php endif; ?>
             <?php endfor; ?>
-            
             <?php for ($i = 1; $i <= 9; $i++) :?>
                 <tr>
-                    <th> <?= $i ?></th>
+                    <th><?= $i ?></th>
                         <?php for ($j = 1; $j <=9; $j++): ?>
-                        <td> <?= $i * $j ?></td>        
+                            <td> <?= $i * $j ?></td>        
                         <?php endfor; ?>
-                    </tr>
+                </tr>
             <?php endfor; ?>
         </tr>
     </table>
 </body>
 </html>
+
+<!-- <tr> -->
+            <!-- <?php for ($i = 0; $i <= 9; $i++) :?> -->
+                <!-- <?php if($i == 0) :?> -->
+                <!-- <th></th> -->
+                <!-- <?php else: ?> -->
+                <!-- <th> <?= $i ?></th> -->
+                <!-- <?php endif; ?> -->
+            <!-- <?php endfor; ?> -->
+            <!-- <?php for ($i = 1; $i <= 9; $i++) :?> -->
+                <!-- <tr> -->
+                    <!-- <th><?= $i ?></th> -->
+                        <!-- <?php for ($j = 1; $j <=9; $j++): ?> -->
+                            <!-- <td> <?= $i * $j ?></td>         -->
+                        <!-- <?php endfor; ?> -->
+                <!-- </tr> -->
+            <!-- <?php endfor; ?> -->
+        <!-- </tr> -->
