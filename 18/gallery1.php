@@ -89,8 +89,8 @@ $replace = ['uploades/', '.png'];
                     
                     <?= $i % 5 == 4 ? '</tr><tr>' : '' ?>
                     <?php endfor; ?>
+                <?php endif; ?>
             </tr>
-            <?php endif; ?>
         </table>
     </form>
     </div>
