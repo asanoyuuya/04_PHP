@@ -12,5 +12,5 @@ echo DAYS_IN_WEEK . '<br>';
 $x = '好きな果実は';
 $y = 'りんごです';
 
-$z = $x . $y;
-echo $z . '<br>';
+$z = $x . $y . '<br>';
+echo $z;
