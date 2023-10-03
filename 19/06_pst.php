@@ -1,11 +1,11 @@
 <?php
 
 $name = '';
-$age = '';
+$age  = '';
 $mail = '';
 if (!empty($_POST)) {
     $name = $_POST['name'];
-    $age = $_POST['age'];
+    $age  = $_POST['age'];
     $mail = $_POST['mail'];
 }
 
@@ -19,7 +19,8 @@ if (!empty($_POST)) {
  */
 function h(?string $string): ?string
 {
-    if (empty($string)) return null;
+    if (empty($string))
+        return null;
     return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }
 ?>
@@ -42,18 +43,18 @@ function h(?string $string): ?string
     </form>
     
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
-        <table>
-            <tr>
-                <th>名前：</th>
-                <th>年齢：</th>
-                <th>メール：</th>
-            </tr>
-            <tr>
-                <td><?= $name ?></td>
-                <td><?= $age ?></td>
-                <td><?= $mail ?></td>
-            </tr>
-        </table>
+            <table>
+                <tr>
+                    <th>名前：</th>
+                    <th>年齢：</th>
+                    <th>メール：</th>
+                </tr>
+                <tr>
+                    <td><?= $name ?></td>
+                    <td><?= $age ?></td>
+                    <td><?= $mail ?></td>
+                </tr>
+            </table>
     <?php endif; ?>
 </body>
 </html>
