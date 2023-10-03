@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 成人判定
+ * 名前と年齢を入力し、成人判定結果を出力する
  * @param string $name
  * @param int $age
  * @return string
