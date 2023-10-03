@@ -72,6 +72,7 @@ $replace = ['uploades/', '.png'];
         <?php if(isset($messageError)):?>
             <p class="error"><?= $messageError ?></p>
         <?php endif; ?>
+      </form>
         
         <table>
             <tr>
@@ -92,7 +93,6 @@ $replace = ['uploades/', '.png'];
                 <?php endif; ?>
             </tr>
         </table>
-    </form>
     </div>
 </body>
 </html>
