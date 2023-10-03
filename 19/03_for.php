@@ -14,11 +14,11 @@
             <?php for ($i = 1; $i <= 9; $i++) :?>
                 <th> <?= $i ?></th>
             <?php endfor; ?>
-            <?php for ($i = 1; $i <= 9; $i++) :?>
+            <?php for ($j = 1; $j <= 9; $j++) :?>
                 <tr>
-                    <th><?= $i ?></th>
-                        <?php for ($j = 1; $j <=9; $j++): ?>
-                            <td> <?= $i * $j ?></td>        
+                    <th><?= $j ?></th>
+                        <?php for ($k = 1; $k <=9; $k++): ?>
+                            <td> <?= $j * $k ?></td>        
                         <?php endfor; ?>
                 </tr>
             <?php endfor; ?>
