@@ -1,13 +1,17 @@
 <?php
 
+/**
+ * 成人判定
+ * @param string $name
+ * @param int $age
+ * @return string
+ */
 function validAge(string $name = '名無し', int $age = 20): string
 {
-    
     if ($age >= 20) {
         return $name . 'さんの年齢は' . $age . '歳で成人です。<br>';
     } else {
         return $name . 'さんの年齢は' . $age . '歳で未成人です。<br>';
-
     }
 }
 
