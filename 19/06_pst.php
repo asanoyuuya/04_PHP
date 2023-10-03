@@ -37,7 +37,7 @@ function h(?string $string): ?string
     <form action="" method="post" novalidate>
         <p>名前：<input type="text" name="name" size="10" value="<?= h($name) ?>"></p>
         <p>年齢：<input type="text" name="age" size="3" maxlength="3" value="<?= h($age) ?>"></p>
-        <p>メール：<input type="text" name="mail" value="<?= h($mail) ?>"></p>
+        <p>メール：<input type="email" name="mail" value="<?= h($mail) ?>"></p>
         <p><input type="submit" value="送信"></p>
     </form>
     
