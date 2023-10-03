@@ -60,16 +60,3 @@ $recipe = [
     </table>
 </body>
 </html>
-
-<!-- <tr>
-            <th>code</th>
-            <th>name</th>
-            <th>price</th>
-        </tr>
-        <?php for ($i = 0; $i < count($recipe); $i++): ?>
-                <tr>
-                <td><?= $recipe[$i]['code'] ?></td>
-                <td><?= $recipe[$i]['name'] ?></td>
-                <td><?= $recipe[$i]['price'] ?></td>
-                </tr>
-        <?php endfor; ?> -->
