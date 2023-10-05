@@ -16,16 +16,17 @@ if (!empty($_POST)) {
     $created_at = date('Y-m-d H:i:s');
     
     if ($name === '' || preg_match('/^(\s|　)+$/u', $name)) {
+        $isValidated = false;
         $nameError = '※氏名を入力してください';
-        $isValidated = false;
     } elseif (mb_strlen($name, 'utf8') > 10) {
-        $nameError = '※氏名は10文字以内で入力してください';
         $isValidated = false;
+        $nameError = '※氏名は10文字以内で入力してください';
     }
     
     if ($age === '' || preg_match('/^(\s|　)+$/u', $age)) {
         $age = null;
     } elseif (!is_numeric($age) || $age < 0) {
+        $isValidated = false;
         $ageError = '※年齢は0以上の数値を入力してください';
     }
     
