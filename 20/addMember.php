@@ -6,7 +6,7 @@ require_once(dirname(__FILE__) . '/db.inc.php');
 $name    = '';
 $age     = '';
 $address = '';
-$result  = '';
+$isValidated  = '';
 if (!empty($_POST)) {
     $isValidated = true;
     $name    = $_POST['name'];
@@ -24,10 +24,9 @@ if (!empty($_POST)) {
     if ($age === '' || preg_match('/^(\s|　)+$/u', $age)) {
         $age = null;
         $ageError = '※年齢は0以上の数値を入力してください';
-        $isValidated = false;
     }
+    
     if ($isValidated == true) {
-        $result = 1;
         
         try{
             $pdo  = dbConnect();
@@ -64,7 +63,7 @@ if (!empty($_POST)) {
     <h1>会員登録</h1>
     <p><a href="member.php">会員一覧に戻る</a></p>
     <form action="" method="post" novalidate>
-        <?php if ($result == 1): ?>
+        <?php if ($isValidated == true): ?>
             <p>登録完了しました。</p>
             <?php else: ?>
                 <p>氏名：<input type="text" name="name" value="<?= h($name) ?>"></p>
@@ -72,7 +71,7 @@ if (!empty($_POST)) {
             <span class="error"><?= $nameError ?></span>
             <?php endif; ?>
             <p>年齢：<input type="text" name="age" value="<?= h($age) ?>"></p>
-            <?php if (isset($nameError)) :?>
+            <?php if (isset($ageError)) :?>
                 <span class="error"><?= $ageError ?></span>
             <?php endif;?>
             <p>住所：<input type="text" name="address" value="<?= h($address) ?>"></p>
