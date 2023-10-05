@@ -17,7 +17,7 @@ class Cars implements Engine
     public function __construct(string $m = 'BMW', string $c = '私')
     {
         $this->maker     = $m;
-        $this->customer = $c;
+        $this->customer  = $c;
     }
     
     /**
