@@ -3,15 +3,17 @@
 require_once(dirname(__FILE__) . '/util.inc.php');
 require_once(dirname(__FILE__) . '/db.inc.php');
 
+
 $name    = '';
 $age     = '';
 $address = '';
-$isValidated  = '';
+$isValidated  = false;
 if (!empty($_POST)) {
     $isValidated = true;
     $name    = $_POST['name'];
     $age     = $_POST['age'];
     $address = $_POST['address'];
+    $created_at = date('Y-m-d H:i:s');
     
     if ($name === '' || preg_match('/^(\s|　)+$/u', $name)) {
         $nameError = '※氏名を入力してください';
@@ -23,6 +25,7 @@ if (!empty($_POST)) {
     
     if ($age === '' || preg_match('/^(\s|　)+$/u', $age)) {
         $age = null;
+    } elseif (!is_numeric($age) || $age < 0) {
         $ageError = '※年齢は0以上の数値を入力してください';
     }
     
@@ -31,11 +34,12 @@ if (!empty($_POST)) {
         try{
             $pdo  = dbConnect();
             $stmt = $pdo->prepare(
-            'INSERT INTO members (name, age, address) VALUES (:name, :age, :address)'
+            'INSERT INTO members (name, age, address, created_at) VALUES (:name, :age, :address, :created_at)'
             );
             $stmt->bindValue(':name', $name, PDO::PARAM_STR);
             $stmt->bindValue(':age', (int)$age, PDO::PARAM_INT);
             $stmt->bindValue(':address', $address, PDO::PARAM_STR);
+            $stmt->bindValue(':created_at', $created_at, PDO::PARAM_STR);
             $stmt->execute();
             } catch (PDOException $e) {
             header('Content-Type: text/plain; charset=UTF-8', true, 500);
@@ -66,15 +70,15 @@ if (!empty($_POST)) {
         <?php if ($isValidated == true): ?>
             <p>登録完了しました。</p>
             <?php else: ?>
-                <p>氏名：<input type="text" name="name" value="<?= h($name) ?>"></p>
+                <p>氏名：<input type="text" name="name" value="<?= h($name) ?>">
             <?php if (isset($nameError)): ?>
-            <span class="error"><?= $nameError ?></span>
+                <span class="error"><?= $nameError ?></span></p>
             <?php endif; ?>
-            <p>年齢：<input type="text" name="age" value="<?= h($age) ?>"></p>
+                <p>年齢：<input type="text" name="age" value="<?= h($age) ?>">
             <?php if (isset($ageError)) :?>
-                <span class="error"><?= $ageError ?></span>
+                <span class="error"><?= $ageError ?></span></p>
             <?php endif;?>
-            <p>住所：<input type="text" name="address" value="<?= h($address) ?>"></p>
+                <p>住所：<input type="text" name="address" value="<?= h($address) ?>"></p>
             <p><input type="submit" value="送信"></p>
         <?php endif;?>
     </form>
