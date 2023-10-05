@@ -3,17 +3,16 @@
 require_once(dirname(__FILE__) . '/util.inc.php');
 require_once(dirname(__FILE__) . '/db.inc.php');
 
-$name = '';
-$age = '';
+$name    = '';
+$age     = '';
 $address = '';
 if (!empty($_POST)) {
-    $name = $_POST['name'];
-    $age = $_POST['age'];
+    $name    = $_POST['name'];
+    $age     = $_POST['age'];
     $address = $_POST['address'];
     
     try{
-            $pdo = dbConnect();
-            
+            $pdo  = dbConnect();
             $stmt = $pdo->prepare(
             'INSERT INTO members (name, age, address) VALUES (:name, :age, :address)'
             );
@@ -21,7 +20,9 @@ if (!empty($_POST)) {
             $stmt->bindValue(':age', (int)$age, PDO::PARAM_INT);
             $stmt->bindValue(':address', $address, PDO::PARAM_STR);
             $stmt->execute();
-            header('member.php');
+            header('Location: member.php');
+            exit;
+            
         } catch (PDOException $e) {
             header('Content-Type: text/plain; charset=UTF-8', true, 500);
             exit($e->getMessage());
