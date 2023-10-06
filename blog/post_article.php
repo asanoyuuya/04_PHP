@@ -78,7 +78,7 @@ try {
 				<table>
 					<tr>
 						<th>カテゴリ</th>
-						<td><?= h($category) ?></td>
+						<td><?= $category ?></td>
 					</tr>
 					<tr>
 						<th>タイトル</th>
