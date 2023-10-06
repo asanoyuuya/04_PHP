@@ -1,3 +1,65 @@
+<?php declare(strict_types=1);
+
+require_once(dirname(__FILE__) . '/db.inc.php');
+require_once(dirname(__FILE__) . '/util.inc.php');
+
+$category_id = '';
+$title       = '';
+$article     = '';
+$isValidated = false;
+if (!empty($_POST)) {
+	$category_id = $_POST['category'];
+	$title       = $_POST['title'];
+	$article     = $_POST['article'];
+	$isValidated = true;
+
+	if ($title === '' || preg_match('/^(\s|　)+$/u', $title)) {
+		$titleError  = 'タイトルを入力してください';
+		$isValidated = false;
+	}
+
+	if ($article === '' || preg_match('/^(\s|　)+$/u', $article)) {
+		$articleError = '記事を入力してください';
+		$isValidated  = false;
+	} elseif (mb_strlen($article, 'utf8') > 100) {
+		$articleError = 'タイトルは100文字以内で入力してください';
+		$isValidated  = false;
+	}
+
+	if ($isValidated == true) {
+		try{
+			$pdo = dbConnect();
+			$stmt = $pdo->prepare(
+				'INSERT INTO articles(id, title, article) VALUES (:category, :title, :article)');
+			
+			$stmt->bindValue(':category', (int)$category_id, PDO::PARAM_INT);
+			$stmt->bindValue(':title', $title, PDO::PARAM_STR);
+			$stmt->bindValue(':article', $article, PDO::PARAM_STR);
+			$stmt->execute();	
+		} catch (PDOException $e) {
+			header('Content-Type: text/plain; charset=UTF-8', true, 500);
+			exit($e->getMessage());
+		}
+		
+	}
+
+}
+
+
+try {
+	$pdo = dbConnect();
+
+	$stmt = $pdo->query('SELECT * FROM categories');
+
+	$categories = $stmt->fetchAll();
+
+} catch (PDOException $e) {
+	header('Content-Type: text/plain; charset=UTF-8', true, 500);
+	exit($e->getMessage());
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -16,66 +78,59 @@
 
 		<section class="postform">
 			<p class="right"><a href="articles.php">記事の一覧に戻る</a></p>
-
+			<?php if($isValidated == true): ?>
 			<p>以下の内容で記事を保存しました。</p>
 			<table>
 				<tr>
 					<th>カテゴリ</th>
-					<td>
-						カテゴリ1
-					</td>
+					<td><?= $category_id ?></td>
 				</tr>
 				<tr>
 					<th>タイトル</th>
-					<td>
-						記事のタイトル
-					</td>
+					<td><?= $title ?></td>
 				</tr>
 				<tr>
 					<th>記事</th>
-					<td>
-						記事のテキスト
-						記事のテキスト
-						記事のテキスト
-						記事のテキスト
-						記事のテキスト
-					</td>
+					<td><?= $article ?></td>
 				</tr>
 			</table>
-			<p><a href="post_article.php">続けて投稿する</a></p>
-
+			<?php else: ?>
 			<p>記事を入力し、送信ボタンを押してください。</p>
-			<form action="" method="post">
-				<table>
+			<table>
+					<form action="" method="post" novalidate>
 					<tr>
 						<th>カテゴリ</th>
 						<td>
 							<select name="category">
-								<option value="1">カテゴリ1</option>
-								<option value="2">カテゴリ2</option>
+								<?php foreach ($categories as $categorie): ?>
+										<option value="<?= h($category_id) ?>"><?= $categorie['name'] ?></option>
+								<?php endforeach; ?>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<th>タイトル</th>
 						<td>
-							<p class="error">エラーメッセージ</p>
-							<input type="text" name="title" size="60" value="" />
+							<input type="text" name="title" size="60" value="<?= h($title) ?>">
+							<?php if(isset($titleError)): ?>
+							<span class="error"><?= $titleError ?></span>
+							<?php endif; ?>
 						</td>
 					</tr>
 					<tr>
 						<th>記事</th>
 						<td>
-							<p class="error">エラーメッセージ</p>
 							<textarea name="article" cols="60" rows="5"></textarea>
+							<?php if(isset($articleError)): ?>
+							<span class="error"><?= $articleError ?></span>
+							<?php endif; ?>
 						</td>
-					</tr>
-				</table>
-				<p><input type="submit" value="送信" /></p>
-			</form>
-
-		</section>
-
+						</tr>
+					</table>
+					<p><input type="submit" value="送信"></p>
+				</form>
+			<?php endif; ?>
+			<p><a href="post_article.php">続けて投稿する</a></p>
 	</div>
 </body>
 
