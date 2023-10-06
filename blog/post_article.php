@@ -7,12 +7,17 @@ $category_id = '';
 $title       = '';
 $article     = '';
 $isValidated = false;
+
+PDO::ERRMODE_EXCEPTION;
+$pdo = dbConnect();
+
 if (!empty($_POST)) {
 	$category_id = $_POST['category'];
 	$title       = $_POST['title'];
 	$article     = $_POST['article'];
 	$isValidated = true;
-
+	
+	
 	if ($title === '' || preg_match('/^(\s|　)+$/u', $title)) {
 		$titleError  = 'タイトルを入力してください';
 		$isValidated = false;
@@ -26,46 +31,48 @@ if (!empty($_POST)) {
 		$isValidated  = false;
 	}
 
-	if ($isValidated == true) {
-		try{
-			$pdo = dbConnect();
-			$stmt = $pdo->prepare(
-				'INSERT INTO articles(id, title, article) VALUES (:category, :title, :article)');
+	if ($isValidated == true ) {
+		try {
 			
-			$stmt->bindValue(':category', (int)$category_id, PDO::PARAM_INT);
+			$stmt = $pdo->prepare(
+				'INSERT INTO articles (category_id, title, article) VALUES (:category_id, :title, :article)');
+			
+			$stmt->bindValue(':category_id', (int)$category_id, PDO::PARAM_INT);
 			$stmt->bindValue(':title', $title, PDO::PARAM_STR);
 			$stmt->bindValue(':article', $article, PDO::PARAM_STR);
-			$stmt->execute();	
+			$stmt->execute();
+			
+			$sql = $pdo->query('SELECT * FROM categories WHERE id =' . $category_id . '');
+			$c = $sql->fetch();
+			$category = $c['name'];
+			
 		} catch (PDOException $e) {
 			header('Content-Type: text/plain; charset=UTF-8', true, 500);
 			exit($e->getMessage());
 		}
 		
 	}
-
 }
 
-
 try {
-	$pdo = dbConnect();
-
 	$stmt = $pdo->query('SELECT * FROM categories');
-
 	$categories = $stmt->fetchAll();
-
 } catch (PDOException $e) {
 	header('Content-Type: text/plain; charset=UTF-8', true, 500);
 	exit($e->getMessage());
 }
 
+
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Taro's Blog | 記事の投稿</title>
 	<link href="css/style.css" rel="stylesheet">
 </head>
@@ -83,7 +90,7 @@ try {
 			<table>
 				<tr>
 					<th>カテゴリ</th>
-					<td><?= $category_id ?></td>
+					<td><?= $category ?></td>
 				</tr>
 				<tr>
 					<th>タイトル</th>
@@ -103,7 +110,7 @@ try {
 						<td>
 							<select name="category">
 								<?php foreach ($categories as $categorie): ?>
-										<option value="<?= h($category_id) ?>"><?= $categorie['name'] ?></option>
+										<option value="<?= $categorie['id'] ?>"><?= $categorie['name'] ?></option>
 								<?php endforeach; ?>
 							</select>
 						</td>
