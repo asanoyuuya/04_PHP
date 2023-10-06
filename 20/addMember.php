@@ -3,6 +3,35 @@
 require_once(dirname(__FILE__) . '/util.inc.php');
 require_once(dirname(__FILE__) . '/db.inc.php');
 
+$error =['※氏名を入力してください', '※氏名は10文字以内で入力してください', '※年齢は0以上の数値を入力してください'];
+
+        
+class Validation{
+    
+    public function __construct(?string $name, ?int $age)
+    {
+        $this->name = $name;
+        $this->age  = $age;
+    }
+    function validName(?string $name): ?string
+    {
+        for($i = 0; $i < count($this->error); $i++) {
+            if ($this->name === '' || preg_match('/^(\s|　)+$/u', $this->name)) {
+                return $this->error[$i];
+            } elseif (mb_strlen($name, 'utf8') > 10)
+            
+        };
+    }
+    function validAge(?int $age): array
+    {
+        if ($this->age === '' || preg_match('/^(\s|　)+$/u', $this->age)) {
+            $res['age'] = null;
+        } elseif (!is_numeric($this->age) || $this->age < 0) {
+            
+        
+        }
+    }
+};
 
 $name    = '';
 $age     = '';
@@ -15,20 +44,7 @@ if (!empty($_POST)) {
     $address = $_POST['address'];
     $created_at = date('Y-m-d H:i:s');
     
-    if ($name === '' || preg_match('/^(\s|　)+$/u', $name)) {
-        $isValidated = false;
-        $nameError = '※氏名を入力してください';
-    } elseif (mb_strlen($name, 'utf8') > 10) {
-        $isValidated = false;
-        $nameError = '※氏名は10文字以内で入力してください';
-    }
     
-    if ($age === '' || preg_match('/^(\s|　)+$/u', $age)) {
-        $age = null;
-    } elseif (!is_numeric($age) || $age < 0) {
-        $isValidated = false;
-        $ageError = '※年齢は0以上の数値を入力してください';
-    }
     
     if ($isValidated == true) {
         
