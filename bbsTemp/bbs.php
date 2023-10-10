@@ -29,12 +29,11 @@ try {
 
 		if ($isValidated == true) {
 			$stmt = $pdo->prepare(
-				'INSERT INTO posts (name, message, created_at) VALUES (:name, :message, :NOW)'
+				'INSERT INTO posts (name, message, created_at) VALUES (:name, :message, NOW())'
 			);
 
 			$stmt->bindValue(':name', $name, PDO::PARAM_STR);
 			$stmt->bindValue(':message', $message, PDO::PARAM_STR);
-			$stmt->bindValue(':created_at', Date('Y-m-d H:i:s'), PDO::PARAM_STR);
 			$stmt->execute();
 
 			$name    = '';
