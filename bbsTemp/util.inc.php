@@ -7,7 +7,7 @@
  * @return string | null
  *
  */
-function h(string|null|int $string): string|null|int
+function h(?string $string): ?string
 {
     if (empty($string)) return null;
     return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
